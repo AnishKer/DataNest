@@ -33,6 +33,18 @@ app.get('/', (req, res) => {
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
+// Analytics routes
+const analyticsRoutes = require('./routes/analytics');
+app.use('/api/analytics', analyticsRoutes);
+
+// User info routes
+const meRoutes = require('./routes/me');
+app.use('/api/auth/me', meRoutes);
+
+// Error handler middleware
+const errorHandler = require('./middleware/errorHandler');
+app.use(errorHandler);
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
